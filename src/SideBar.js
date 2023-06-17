@@ -19,21 +19,24 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
-
-  const toggle=useSelector((store)=>store.app.isMenuOpen)
+  const toggle = useSelector((store) => store.app.isMenuOpen);
   console.log(toggle);
-  if(toggle){
+  if (toggle=="FullOpen") {
     return (
       <Card className=" top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
         <List className="h-6 w-5 font-medium text-lg text-black">
-          <ListItem>
-            <ListItemPrefix>
-              <FontAwesomeIcon icon={faHouse} className="h-6 w-5" />
-            </ListItemPrefix>
-            Home
-          </ListItem>
+        <Link to="/">
+            <ListItem>
+              <ListItemPrefix>
+                <FontAwesomeIcon icon={faHouse} className="h-6 w-5" />
+              </ListItemPrefix>
+              
+              Home
+            </ListItem>
+            </Link>
           <ListItem>
             <ListItemPrefix>
               <FontAwesomeIcon icon={faCirclePlay} className="h-6 w-5" />
@@ -83,44 +86,38 @@ const SideBar = () => {
         </List>
       </Card>
     );
+  } else if(toggle=="PartialOpen"){
+    return (
+      <Card className=" w-24 flex top-4  h-[calc(100vh-2rem)]  p-4 shadow-xl shadow-blue-gray-900/5">
+        <List className="h-6 font-medium text-lg text-black">
+          <ListItem className="w-20">
+            <ListItemPrefix>
+              <FontAwesomeIcon icon={faHouse} className="h-6 " />
+            </ListItemPrefix>
+          </ListItem>
+          <ListItem className="w-20">
+            <ListItemPrefix>
+              <FontAwesomeIcon icon={faCirclePlay} className="h-6 " />
+            </ListItemPrefix>
+          </ListItem>
+          <ListItem className="w-20">
+            <ListItemPrefix>
+              <FontAwesomeIcon icon={faLayerGroup} className="h-6 " />
+            </ListItemPrefix>
+          </ListItem>
+
+          <ListItem className="w-20">
+            <ListItemPrefix>
+              <FontAwesomeIcon icon={faPhotoFilm} className="h-6 " />
+            </ListItemPrefix>
+          </ListItem>
+        </List>
+      </Card>
+    );
   }
   else{
-    return (
-      
-        <Card className=" w-24 flex top-4  h-[calc(100vh-2rem)]  p-4 shadow-xl shadow-blue-gray-900/5">
-          <List className="h-6 font-medium text-lg text-black">
-            <ListItem className="w-20">
-              <ListItemPrefix >
-                <FontAwesomeIcon icon={faHouse} className="h-6 " />
-              </ListItemPrefix>
-              
-            </ListItem>
-            <ListItem className="w-20">
-              <ListItemPrefix>
-                <FontAwesomeIcon icon={faCirclePlay} className="h-6 " />
-              </ListItemPrefix>
-              
-            </ListItem>
-            <ListItem className="w-20">
-              <ListItemPrefix>
-                <FontAwesomeIcon icon={faLayerGroup} className="h-6 " />
-              </ListItemPrefix>
-              
-            </ListItem>
-            
-            <ListItem className="w-20">
-              <ListItemPrefix>
-                <FontAwesomeIcon icon={faPhotoFilm} className="h-6 " />
-              </ListItemPrefix>
-              
-            </ListItem>
-            
-          </List>
-        </Card>
-      );
-    
+    return;
   }
-  
 };
 
 export default SideBar;
