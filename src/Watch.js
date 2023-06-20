@@ -12,11 +12,6 @@ const Watch = () => {
     dispatch(closeMenu());
   });
   return (
-    /*  <video className="flex h-full w-4/6 rounded-lg pl-20 m-2" controls autoPlay>
-      
-      <source src={"https://www.youtube.com/embed/"+searchParams.get("v")} />
-     
-    </video>  */
     <div>
       <iframe
         width="1200"
